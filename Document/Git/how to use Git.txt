@@ -1,0 +1,95 @@
+﻿1. Cài đặt Git:
+File download : https://git-scm.com/
+Document: https://thachpham.com/series/git-co-ban
+
+2. Thiết lập chứng thực cá nhân trên Git Bash
+- Vào command line và nhập 2 lệnh sau:
+$ git config --global user.name "User name"
+$ git config --global user.email "example@tma.com.vn"
+
+-  kiểm tra thông tin chứng thực trên user 
+$ cat ~/.gitconfig
+
+3. Tạo account and create new repository trên Git server (bởi vì ILM đã có server và account nên bỏ qua bước này)
+
+4. Clone kho chứa trên server(github) về máy.
+- Vào command line và nhập lệnh:
+$ git clone https://github.com/tunguyen1710/TMA-training
+
+5. Cách tạo file và commit lên server(github)
+Bây giờ hãy truy cập vào thư mục working tree (thư mục vừa clone repository về) và thử tạo ra một file tên là README.md, 
+sau đó dùng lệnh git add để đưa file này vào Staging Area.
+
+$ cd hoc-git
+$ echo "# Huong dan Git co ban" > README.md
+$ git add README.md
+$ git commit -m "First commit on Github"
+[master (root-commit) 6e729a4] First commit on Github
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+
+$ git push origin master    ----> origin là tên default của remote repository (để kiểm tra dùng lệnh $ git remote -v)
+
+- Remove 1 file khỏi staging area
+$ git reset HEAD <tên_file>
+
+- remove 1 file khỏi staging area
+$ rm <tên_file>
+
+- Xóa file
+$ git rm -f <tên_file>
+
+6. Cách modify 1 file có sẵn trong staging area và commit lên server (github)
+- Sau khi add 1 file vào staging are, tuy nhiên sau đó bạn lại muốn chỉnh sửa nội dung trong đó. 
+Thì sau khi hoàn tất chình sửa bạn sẽ add lại vào staging area một lần nữa để Git ghi nhận sửa đổi.
+
+$ git add <tên file>
+$ git commit -m "commit after modifying"
+$ git push origin master
+
+7. Cập nhật mọi thay đổi từ repo server về máy bạn
+$ git pull ten_remote
+
+8. Branch
+- Tạo 1 local branch 
+$ git branch <ten_branch>
+
+- Check các branch hiện tại trong remote
+$ git branch
+$ git remote show <tên_remote>
+
+- Checkout 1 branch
+$ git checkout <tên_branch>
+
+- Gộp dữ liệu từ 1 branch bất kì về branch đang trỏ
+$ git merge <tên_branch_muốn_gộp>
+
+- Xóa branch
+$ git branch -d <tên_branch_muốn_xóa>
+
+- Tạo 1 branch trên repo server
+$ git push origin <tên_branch>
+
+9. remote repository
+- Kiểm tra các remote repository hiện hành
+$ git remote -v
+
+- Đổi tên remote repository
+$ git remote rename <tên_cũ> <tên_mới>
+
+- Thêm một remote
+$ git remote add <tên_remote> URL
+
+10. Git log
+- Xem lịch suer các lần commit
+$ git log
+$ git log -p
+ Để thoát khỏi vim
+$ :q
+
+11. revert old commit:
+$ git reset --soft  <commit_id> or $ git reset --hard  <commit_id>
+$ git push origin -f
+
+12. undo to the latest commit (quay lai thoi diem truoc khi revert commit)
+$ git commit -c ORIG_HEAD

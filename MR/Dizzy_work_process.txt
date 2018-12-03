@@ -1,0 +1,46 @@
+- Shared directory: \\192.168.86.85\HL7800 Project, where:
+	+ Document: only put documents related to Dizzy product.
+	+ Assignment: assign tasks for members here.
+	+ Log: execution log files (both manual and automation) must be put here.
+	  New folders based on FW versions should be created for each campaign
+	+ Modified scripts: scripts required modification should be put here.
+          New folders based on Jira tickets should be created for each campaign. Original scripts should be from MCBL SVN.
+	+ Project Management: info for remote access or lab, work process, data for report.
+	+ QC upload: template to upload test results to QC.
+	+ Software: drivers, fw.
+	+ Members: temporary files from members should be put here.
+- QC path: Test Lab root\AT\ALTAIR\AT_ALTAIR_HL7800_Dizzy\AT_HL7800
+- Jira project: Dizzy, all bugs should be opened against Dizzy. Designs may change to ALT1250.
+	Jira filter: 
+		< "HW Product" = HL7800 and type = bug > for Dizzy
+		< "HW Product" in (HL7718, HL7748, HL7749) and type = bug > for Drums
+	Jira template:
+	Summary: [HL7800][Command area][Command] summary
+	i.e., [HL7800][MECS][+CTZU] Error reponse for AT+CTZU=0
+	HW Series: HL78xx(ALT1250)
+	HW Product: HL7800
+	Test Number: testid:testname
+	i.e., 141505:A_INTEL_LTE_MECS_CTZU_0001 
+	Step:
+	1. Connect to HL7800 module using UART
+	2. Enter AT+CPIN="3699" and AT+CMEE=1
+	3. Enter AT+CTZU=0
+	4. Enter AT+CTZU?
+
+	Expected result:
+	At step3, the module should return: \r\nOK\r\n
+	At step4, the module should return: *+CTZU: 0*OK\r\n
+
+	Actual result:
+	At step3,4 the module returns: ERROR\r\n
+	The same issue when AT+CTZU=1
+
+- Before creating jira for deffect:
+	1. Query jira. 
+	2. Consult technical documents, 3GPP standards.
+	3. Consult with Drums team to compare.
+	4. Discuss with team.
+
+- Tips/knowledge sharing: highly appriciated if you can put on wiki: http://192.168.86.103/tmawiki/index.php/Main_Page
+
+

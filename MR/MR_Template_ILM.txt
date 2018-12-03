@@ -1,0 +1,27 @@
+[HL7800][Command area][Command] Summary. Example: [HL7800][MECS][+CTZU] Error reponse for AT+CTZU=0 
+
+	HW Series: HL78xx(ALT1250)
+	HW Product: HL7802
+	Test Number: testid:testname
+	i.e., 141505:A_INTEL_LTE_MECS_CTZU_0001
+
+
+*Versions:* HL7802
+*FIRMWARE:* SWIMCB71XX.04.02.A14.164804.201802221656.01
+*CGSN:* 354616090000907
+*Network:* Amarisoft
+
+*How to reproduce*
+Step 1: Select "SM" or "ME" storage and delete all SMS 
+Step 2: Change SMS notification with AT+CNMI=1,0,0,1,0
+Step 3: Send 4 PDU SMS in type 0
+Step 4: Check "SM" or "ME" storage with AT+CPMS?
+
+*Expected Result*
+Step 4: There is no SMS in "SM" or "ME" storage
+
+*Actual Result*
+Step 4: There are 4 SMS in "SM" or "ME" storage
+
+*Note*
+Relate to INT71XXMCBL-1158
